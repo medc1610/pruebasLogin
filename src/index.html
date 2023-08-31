@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular 11 - Msal v2 Quickstart Sample App</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="mat-typography">
+  <app-root></app-root>
+  <app-redirect></app-redirect>
+  <script>
+    if (document.documentElement) {
+      let defaultThemeMode = "system";
+
+      let hasKTName = document.body.hasAttribute("data-kt-name");
+      let lsKey = "kt_" + (hasKTName ? name + "_" : "") + "theme_mode_value"
+      let themeMode = localStorage.getItem(lsKey);
+      if (!themeMode) {
+        if (defaultThemeMode === "system") {
+          themeMode =
+            window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        } else {
+          themeMode = defaultThemeMode;
+        }
+      }
+
+      document.documentElement.setAttribute("data-bs-theme", themeMode);
+    }
+  </script>
+</body>
+</html>

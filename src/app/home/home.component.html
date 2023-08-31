@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <a class="title" href="/">{{ title }}</a>
+
+  <div class="toolbar-spacer"></div>
+
+  <a mat-button [routerLink]="['profile']">Profile</a>
+
+  <button mat-raised-button *ngIf="!loginDisplay" (click)="login()">Login</button>
+  <button mat-raised-button *ngIf="loginDisplay" (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<div *ngIf="!loginDisplay">
+    <p class="welcome">Welcome to the MSAL.js v2 Angular Quickstart!</p>
+    <p>This sample demonstrates how to configure MSAL Angular to login, logout, protect a route, and acquire an access token for a protected resource such as the Microsoft Graph.</p>
+    <p>Please sign-in to see your profile information.</p>
+</div>
+
+<div *ngIf="loginDisplay">
+    <p>Login successful!</p>
+    <p>Request your profile information by clicking Profile above.</p>
+</div>
+
+<ng-template #formError let-control="control" let-message="message" let-validation="validation">
+  <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched)">
+    <div class="fv-plugins-message-container">
+      <span role="alert">
+        {{ message }}
+      </span>
+    </div>
+  </ng-container>
+</ng-template>
+
